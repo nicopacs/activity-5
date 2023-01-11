@@ -13,6 +13,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   File? imageFile;
+  @override
+  void initState() {
+    super.initState();
+    storagePermission();
+  }
 
   /// PICK IMAGE FROM LOCAL STORAGE
   void pickImage() async {
@@ -41,6 +46,7 @@ class _HomePageState extends State<HomePage> {
       }
     }
   }
+
 
   /// SNACK BAR
   showPermissionGranted() {
@@ -72,11 +78,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 15,
         icon: Icons.settings_suggest,
         children: [
-          SpeedDialChild(
-            child: const Icon(Icons.storage_sharp),
-            label: 'Ask Storage Permission',
-            onTap: storagePermission,
-          ),
+
           SpeedDialChild(
             child: const Icon(Icons.settings_applications),
             label: 'Open Permission Settings',
@@ -104,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     onPressed: () {
-                      pickImage();
+                        pickImage();
                     },
                     child: const Text(
                       'Choose Image',
