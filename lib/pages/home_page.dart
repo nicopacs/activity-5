@@ -4,7 +4,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -88,33 +87,34 @@ class _HomePageState extends State<HomePage> {
       body: Container(
           alignment: Alignment.center,
           child: Column(
-                  children: [
-                   const SizedBox(height: 30),
-                     Container(
-                      child: imageFile == null ? const Align(
+            children: [
+              const SizedBox(height: 30),
+              Container(
+                child: imageFile == null
+                    ? const Align(
                         child: CircleAvatar(
                           radius: 1,
                           backgroundColor: Colors.transparent,
                         ),
-                      ): Image.file(imageFile!, fit: BoxFit.cover),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            pickImage();
-                          },
-                          child: const Text(
-                            'Choose Image',
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+                      )
+                    : Image.file(imageFile!, fit: BoxFit.cover),
               ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      pickImage();
+                    },
+                    child: const Text(
+                      'Choose Image',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
